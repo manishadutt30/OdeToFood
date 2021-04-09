@@ -1,0 +1,31 @@
+﻿@page "{restaurantId:int?}"
+@model OdeToFood.Pages.Restaurants.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Editing @Model.restaurants.Name</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="restaurants.Id" />
+    <div class="form-group">
+        <label asp-for="restaurants.Name"></label>
+        <input asp-for="restaurants.Name" class="form-control" />
+        <span class="text-danger" asp-validation-for="restaurants.Name"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="restaurants.Location"></label>
+        <input asp-for="restaurants.Location" class="form-control" />
+        <span class="text-danger" asp-validation-for="restaurants.Location"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="restaurants.Cuisine"></label>
+        <select asp-for="restaurants.Cuisine" class="form-control" asp-items="Model.Cuisines"></select>
+        <span class="text-danger" asp-validation-for="restaurants.Cuisine"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form> 
+
+@section Scripts {
+  <partial name="_ValidationScriptsPartial" />
+}
